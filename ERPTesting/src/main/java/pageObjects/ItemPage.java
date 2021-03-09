@@ -37,6 +37,8 @@ public class ItemPage {
 
 	By BtnRefresh = By.cssSelector("button[data-label='Refresh']");
 
+	By SearchResultItemName = By.xpath("//span[@class='level-item bold ellipsis']//a[@class='ellipsis']");
+	
 	private String AllItemGroups = "All Item Groups";
 
 	public void CreateNewItem() 
@@ -50,7 +52,7 @@ public class ItemPage {
 		Utilities.SendKeys(driver, ItemGroup,AllItemGroups);
 		Utilities.Click(driver, BtnSave);
 
-		Utilities.Click(driver, columnItemName);
+		Utilities.ClickUsingAction(driver, columnItemName);
 		Utilities.Clear(driver, columnItemName);
 		Utilities.SendKeys(driver, columnItemName, itemName);
 
@@ -59,5 +61,10 @@ public class ItemPage {
 
 		String itemSearch = "//a[contains(text(),'"+itemName+"')]";
 		Utilities.IsElementDisplayed(driver, By.xpath(itemSearch));
+	}
+	
+	public String getItemName()
+	{
+		return Utilities.GetText(driver, SearchResultItemName);
 	}
 }
