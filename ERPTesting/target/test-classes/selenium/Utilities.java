@@ -63,7 +63,7 @@ public class Utilities{
 
 	public static void WaitTillPageLoad(WebDriver driver)
 	{
-		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Constants.SHORT_WAIT,TimeUnit.SECONDS);
 	}
 	
 	public static String GetText(WebDriver driver,By locator)
